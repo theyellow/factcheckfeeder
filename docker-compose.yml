@@ -1,0 +1,24 @@
+version: '3.4'
+services:
+  dramabot:
+    container_name: factcheck-feeder
+    image: factcheck-feeder:latest
+    environment:
+      - TZ=Europe/Berlin
+    build:
+      context: ./
+      args:
+        - JAR_FILE=factcheck-feeder-0.0.1-SNAPSHOT-exec.jar
+    ports:
+# format: "port-on-docker-host:port-in-docker-container"
+# webhook port
+      - "8091:8091"
+    volumes:
+# mount local directories in docker-container
+      - ./config:/config
+      - ./log:/log
+volumes:
+  config:
+    driver: local
+  log:
+    driver: local
