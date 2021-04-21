@@ -37,6 +37,6 @@ hs_err_pid*
 .project
 .settings
 .idea
-dramabot.iml
+*.iml
 
 target
